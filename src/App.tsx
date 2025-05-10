@@ -153,86 +153,90 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header />
-      <Container maxWidth="md">
-        <Box sx={{ my: 4 }}>
-          <Typography variant="h4" component="h1" gutterBottom align="center">
-            Convert Your iPhone Photos to JPEG - Simple & Free!
-          </Typography>
-          <Typography variant="subtitle1" align="center" color="text.secondary" paragraph>
-            Effortlessly convert your iPhone HEIC photos to universally compatible JPEG format. Our professional-grade tool processes all images <b>entirely within your browser</b>—<b>no uploads, no server storage, and no compromise to your privacy</b>. Simply drag and drop your HEIC images and download high-quality JPEGs instantly.
-          </Typography>
-
-          <Paper
-            {...getRootProps()}
-            sx={{
-              p: 3,
-              mt: 4,
-              textAlign: 'center',
-              cursor: 'pointer',
-              backgroundColor: isDragActive ? 'action.hover' : 'background.paper',
-              border: '2px dashed',
-              borderColor: isDragActive ? 'primary.main' : 'divider',
-              minHeight: 180,
-              height: { xs: 180, sm: 220, md: 260 },
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-            }}
-          >
-            <input {...getInputProps()} />
-            <Typography variant="h6" gutterBottom>
-              {isDragActive
-                ? 'Drop the files here...'
-                : 'Drag & drop HEIC files here, or click to select files'}
+      <Box sx={{
+        minHeight: '100vh',
+        background: 'linear-gradient(180deg, #f9f9f9 0%, #e3eafc 100%)',
+      }}>
+        <Container maxWidth="md">
+          <Box sx={{ my: 4 }}>
+            <Typography variant="h4" component="h1" gutterBottom align="center">
+              Convert Your iPhone Photos to JPEG - Simple & Free!
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              No file number limit, up to 10MB each
+            <Typography variant="subtitle1" align="center" color="text.secondary" paragraph>
+              Effortlessly convert your iPhone HEIC photos to universally compatible JPEG format. Our professional-grade tool processes all images <b>entirely within your browser</b>—<b>no uploads, no server storage, and no compromise to your privacy</b>. Simply drag and drop your HEIC images and download high-quality JPEGs instantly.
             </Typography>
-          </Paper>
 
-          {isConverting && (
-            <Box sx={{ mt: 4 }}>
-              <LinearProgress variant="determinate" value={progress} />
-              <Typography variant="body2" align="center" sx={{ mt: 1 }}>{progress}%</Typography>
-            </Box>
-          )}
+            <Paper
+              {...getRootProps()}
+              sx={{
+                p: 3,
+                mt: 4,
+                textAlign: 'center',
+                cursor: 'pointer',
+                backgroundColor: isDragActive ? 'action.hover' : 'background.paper',
+                border: '2px dashed',
+                borderColor: isDragActive ? 'primary.main' : 'divider',
+                minHeight: 180,
+                height: { xs: 180, sm: 220, md: 260 },
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+              }}
+            >
+              <input {...getInputProps()} />
+              <Typography variant="h6" gutterBottom>
+                {isDragActive
+                  ? 'Drop the files here...'
+                  : 'Drag & drop HEIC files here, or click to select files'}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                No file number limit, up to 10MB each
+              </Typography>
+            </Paper>
 
-          {(errors.length > 0 || abortWarning) && (
-            <Box sx={{ mt: 4 }}>
-              {errors.map((err, idx) => (
-                <Alert severity="error" sx={{ mb: 1 }} key={idx}>{err}</Alert>
-              ))}
-              {abortWarning && (
-                <Alert severity="warning">Too many errors. Aborted remaining files.</Alert>
-              )}
-            </Box>
-          )}
+            {isConverting && (
+              <Box sx={{ mt: 4 }}>
+                <LinearProgress variant="determinate" value={progress} />
+                <Typography variant="body2" align="center" sx={{ mt: 1 }}>{progress}%</Typography>
+              </Box>
+            )}
 
-          {files.length > 0 && (
-            <Box sx={{ mt: 4 }}>
-              <Stack direction="row" spacing={2} sx={{ mb: 2, justifyContent: 'flex-end' }}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleDownloadZip}
-                  disabled={isConverting}
-                >
-                  Download All
-                </Button>
-              </Stack>
-              <FileList
-                files={files}
-                isConverting={isConverting}
-                grid
-              />
-            </Box>
-          )}
+            {(errors.length > 0 || abortWarning) && (
+              <Box sx={{ mt: 4 }}>
+                {errors.map((err, idx) => (
+                  <Alert severity="error" sx={{ mb: 1 }} key={idx}>{err}</Alert>
+                ))}
+                {abortWarning && (
+                  <Alert severity="warning">Too many errors. Aborted remaining files.</Alert>
+                )}
+              </Box>
+            )}
 
-          <FAQ />
-        </Box>
-      </Container>
-      <Footer />
+            {files.length > 0 && (
+              <Box sx={{ mt: 4 }}>
+                <Stack direction="row" spacing={2} sx={{ mb: 2, justifyContent: 'flex-end' }}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleDownloadZip}
+                    disabled={isConverting}
+                  >
+                    Download All
+                  </Button>
+                </Stack>
+                <FileList
+                  files={files}
+                  isConverting={isConverting}
+                  grid
+                />
+              </Box>
+            )}
+
+            <FAQ />
+          </Box>
+        </Container>
+        <Footer />
+      </Box>
     </ThemeProvider>
   );
 }
