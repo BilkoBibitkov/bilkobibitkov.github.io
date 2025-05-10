@@ -33,7 +33,7 @@ A free, simple, and secure online tool to convert your iPhone HEIC photos to JPE
 
 ## Privacy
 
-Your privacy is our priority. All conversions happen directly in your browser - your files never leave your device.
+We take your privacy seriously. All image processing and conversion is performed entirely within your browser using advanced client-side technology. No images or data are ever uploaded, transmitted, or stored on any server. Your files remain secure and private at all times.
 
 ## License
 

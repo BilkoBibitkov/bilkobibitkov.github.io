@@ -159,7 +159,7 @@ function App() {
             Convert Your iPhone Photos to JPEG - Simple & Free!
           </Typography>
           <Typography variant="subtitle1" align="center" color="text.secondary" paragraph>
-            Tired of dealing with .heic files that don't open everywhere? Our free online tool makes it incredibly easy to convert your iPhone photos to the universally compatible .jpeg format. Simply drag and drop your HEIC images, and with a click, download them as JPEGs. No software installation needed, and your privacy is our priority.
+            Effortlessly convert your iPhone HEIC photos to universally compatible JPEG format. Our professional-grade tool processes all images <b>entirely within your browser</b>—<b>no uploads, no server storage, and no compromise to your privacy</b>. Simply drag and drop your HEIC images and download high-quality JPEGs instantly.
           </Typography>
 
           <Paper

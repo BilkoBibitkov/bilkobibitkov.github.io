@@ -42,7 +42,7 @@ const faqItems = [
   {
     question: 'Is my privacy protected?',
     answer:
-      'Yes! All conversions happen directly in your browser. Your files never leave your device or get uploaded to any server. We take your privacy seriously.',
+      <>Absolutely. Your privacy is of utmost importance to us. <b>All image processing and conversion is performed entirely within your browser</b> using advanced client-side technology. <b>No images or data are ever uploaded, transmitted, or stored on any server</b>. This ensures that your files remain secure and private at all times.</>,
   },
   {
     question: 'Is this service really free?',
