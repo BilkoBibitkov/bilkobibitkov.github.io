@@ -5,7 +5,6 @@ import { Container, Box, Typography, Paper, Alert, LinearProgress, Button, Stack
 import { useDropzone } from 'react-dropzone';
 import heic2any from 'heic2any';
 import FileList from './components/FileList';
-import Header from './components/Header';
 import FAQ from './components/FAQ';
 import JSZip from 'jszip';
 import Footer from './components/Footer';
