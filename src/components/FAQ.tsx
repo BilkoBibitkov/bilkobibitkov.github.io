@@ -60,9 +60,19 @@ const faqItems = [
       'Our converter works on all modern browsers including Chrome, Firefox, Safari, and Edge. For the best experience, we recommend using the latest version of your preferred browser.',
   },
   {
-    question: 'Where are HEIC files commonly used or encountered?',
+    question: 'What are some interesting facts about HEIC?',
     answer:
-      <>HEIC files are commonly encountered in major cities like <b>New York</b> and <b>San Francisco</b>, where many users rely on Apple devices for photography, business, and creative work. As these cities are technology and media hubs, compatibility with HEIC files is important for professionals and consumers alike. Whether you are sharing photos from a trip to New York or working on a creative project in San Francisco, converting HEIC to JPEG ensures your images are accessible everywhere.</>,
+      <>
+        <ul style={{marginTop: 4, marginBottom: 4}}>
+          <li>HEIC is a container format based on the High Efficiency Image File Format (HEIF), developed by the Moving Picture Experts Group (MPEG).</li>
+          <li>HEIC files can store single images, image sequences (like bursts or animations), and even non-destructive edits and metadata.</li>
+          <li>HEIC files using HEVC (H.265) encoding can be about half the size of equivalent quality JPEGs, saving storage space on devices.</li>
+          <li>Apple was the first major adopter of HEIC in 2017 with iOS 11, making it the default photo format for iPhones and iPads.</li>
+          <li>HEIC is not universally supported; for example, some versions of Adobe Photoshop only support 8-bit HEIC, not 10- or 12-bit.</li>
+          <li>HEIC is a special case of the ISO Base Media File Format, which is also used for MP4 and JPEG 2000 files.</li>
+        </ul>
+        <span style={{fontSize: '0.95em'}}>Source: <a href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener">Wikipedia - High Efficiency Image File Format</a></span>
+      </>,
   },
 ];
 
