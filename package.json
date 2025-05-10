@@ -2,6 +2,7 @@
   "name": "heic-to-jpeg-converter",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://bilkobibitkov.github.io/heic-to-jpeg/",
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
