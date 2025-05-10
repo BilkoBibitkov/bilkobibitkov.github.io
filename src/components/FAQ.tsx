@@ -5,17 +5,17 @@ const faqItems = [
   {
     question: 'What is a HEIC file?',
     answer:
-      <>HEIC (High Efficiency Image Container) is the default image format used by Apple devices. It offers better compression than JPEG while maintaining high quality, but it is not universally supported across all platforms and applications. HEIC files are created by iPhones, iPads, and many modern Mac computers running macOS High Sierra (10.13) or later. Learn more on <Link href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener">Wikipedia</Link>.</>,
+      <>HEIC (High Efficiency Image Container) is the default image format used by Apple devices. It offers better compression than JPEG while maintaining high quality, but it is not universally supported across all platforms and applications. HEIC files are created by iPhones, iPads, and many modern Mac computers running macOS High Sierra (10.13) or later. Learn more on <Link href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener noreferrer">Wikipedia</Link>.</>,
   },
   {
     question: 'Who invented HEIC?',
     answer:
-      <>HEIC is based on the High Efficiency Image File Format (HEIF), which was developed by the <Link href="https://en.wikipedia.org/wiki/Moving_Picture_Experts_Group" target="_blank" rel="noopener">Moving Picture Experts Group (MPEG)</Link> and standardized as ISO/IEC 23008-12. The HEIC variant uses HEVC (H.265) encoding for images. See <Link href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener">Wikipedia</Link> for more details.</>,
+      <>HEIC is based on the High Efficiency Image File Format (HEIF), which was developed by the <Link href="https://en.wikipedia.org/wiki/Moving_Picture_Experts_Group" target="_blank" rel="noopener noreferrer">Moving Picture Experts Group (MPEG)</Link> and standardized as ISO/IEC 23008-12. The HEIC variant uses HEVC (H.265) encoding for images. See <Link href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener noreferrer">Wikipedia</Link> for more details.</>,
   },
   {
     question: 'When did Apple use HEIC first?',
     answer:
-      <>Apple first adopted the HEIC format as the default for photos with the release of <b>iOS 11</b> in 2017. This change allowed iPhones and iPads to save images in a more efficient format, reducing file sizes while maintaining quality. Read more at <Link href="https://www.reddit.com/r/YouShouldKnow/comments/uxsp2q/ysk_apple_iphones_have_started_saving_images_as/" target="_blank" rel="noopener">Reddit</Link> and <Link href="https://www.adaminsights.com/exploring-the-world-of-heic-apples-revolutionary-image-file-format/" target="_blank" rel="noopener">Adam Insights</Link>.</>,
+      <>Apple first adopted the HEIC format as the default for photos with the release of <b>iOS 11</b> in 2017. This change allowed iPhones and iPads to save images in a more efficient format, reducing file sizes while maintaining quality. Read more at <Link href="https://www.reddit.com/r/YouShouldKnow/comments/uxsp2q/ysk_apple_iphones_have_started_saving_images_as/" target="_blank" rel="noopener noreferrer">Reddit</Link> and <Link href="https://www.adaminsights.com/exploring-the-world-of-heic-apples-revolutionary-image-file-format/" target="_blank" rel="noopener noreferrer">Adam Insights</Link>.</>,
   },
   {
     question: 'Which Apple devices create HEIC files?',
@@ -26,7 +26,7 @@ const faqItems = [
         <li><b>iPad:</b> iPad Pro (all generations), iPad Air (3rd gen and newer), iPad mini (5th gen and newer), iPad (5th gen and newer)</li>
         <li><b>Mac:</b> All Mac computers running macOS High Sierra (10.13) or later</li>
       </ul>
-      For a full list and more details, see <Link href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener">Wikipedia</Link> and <Link href="https://www.adaminsights.com/exploring-the-world-of-heic-apples-revolutionary-image-file-format/" target="_blank" rel="noopener">Adam Insights</Link>.
+      For a full list and more details, see <Link href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener noreferrer">Wikipedia</Link> and <Link href="https://www.adaminsights.com/exploring-the-world-of-heic-apples-revolutionary-image-file-format/" target="_blank" rel="noopener noreferrer">Adam Insights</Link>.
       </>,
   },
   {
@@ -71,7 +71,7 @@ const faqItems = [
           <li>HEIC is not universally supported; for example, some versions of Adobe Photoshop only support 8-bit HEIC, not 10- or 12-bit.</li>
           <li>HEIC is a special case of the ISO Base Media File Format, which is also used for MP4 and JPEG 2000 files.</li>
         </ul>
-        <span style={{fontSize: '0.95em'}}>Source: <a href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener">Wikipedia - High Efficiency Image File Format</a></span>
+        <span style={{fontSize: '0.95em'}}>Source: <a href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener noreferrer">Wikipedia - High Efficiency Image File Format</a></span>
       </>,
   },
   {
@@ -82,7 +82,7 @@ const faqItems = [
   {
     question: 'Is the code for this converter available for review?',
     answer:
-      <>Yes, our code is open source and available for public review. You can view and contribute to the project on <Link href="https://github.com/BilkoBibitkov/heic-to-jpeg" target="_blank" rel="noopener">GitHub</Link>.</>,
+      <>Yes, our code is open source and available for public review. You can view and contribute to the project on <Link href="https://github.com/BilkoBibitkov/heic-to-jpeg" target="_blank" rel="noopener noreferrer">GitHub</Link>.</>,
   },
 ];
 
