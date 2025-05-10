@@ -1,16 +1,33 @@
 import React from 'react';
-import { Box, Typography, Paper } from '@mui/material';
+import { Box, Typography, Paper, Link } from '@mui/material';
 
 const faqItems = [
   {
     question: 'What is a HEIC file?',
     answer:
-      'HEIC (High Efficiency Image Container) is the default image format used by Apple devices. It offers better compression than JPEG while maintaining high quality, but it is not universally supported across all platforms and applications. HEIC files are created by iPhones, iPads, and many modern Mac computers running macOS High Sierra (10.13) or later.',
+      <>HEIC (High Efficiency Image Container) is the default image format used by Apple devices. It offers better compression than JPEG while maintaining high quality, but it is not universally supported across all platforms and applications. HEIC files are created by iPhones, iPads, and many modern Mac computers running macOS High Sierra (10.13) or later. Learn more on <Link href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener">Wikipedia</Link>.</>,
+  },
+  {
+    question: 'Who invented HEIC?',
+    answer:
+      <>HEIC is based on the High Efficiency Image File Format (HEIF), which was developed by the <Link href="https://en.wikipedia.org/wiki/Moving_Picture_Experts_Group" target="_blank" rel="noopener">Moving Picture Experts Group (MPEG)</Link> and standardized as ISO/IEC 23008-12. The HEIC variant uses HEVC (H.265) encoding for images. See <Link href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener">Wikipedia</Link> for more details.</>,
+  },
+  {
+    question: 'When did Apple use HEIC first?',
+    answer:
+      <>Apple first adopted the HEIC format as the default for photos with the release of <b>iOS 11</b> in 2017. This change allowed iPhones and iPads to save images in a more efficient format, reducing file sizes while maintaining quality. Read more at <Link href="https://www.reddit.com/r/YouShouldKnow/comments/uxsp2q/ysk_apple_iphones_have_started_saving_images_as/" target="_blank" rel="noopener">Reddit</Link> and <Link href="https://www.adaminsights.com/exploring-the-world-of-heic-apples-revolutionary-image-file-format/" target="_blank" rel="noopener">Adam Insights</Link>.</>,
   },
   {
     question: 'Which Apple devices create HEIC files?',
     answer:
-      'HEIC files can be created by all modern Apple devices, including iPhone (iPhone 7 and newer), iPad (iPad Pro, iPad Air, iPad mini, and iPad 5th generation or newer), and Mac computers running macOS High Sierra (10.13) or later. This includes iPhone 7, 8, X, 11, 12, 13, 14, SE (2nd gen and newer), iPad Pro, iPad Air (3rd gen and newer), iPad mini (5th gen and newer), and all Macs with compatible macOS.',
+      <>HEIC files can be created by all modern Apple devices, including:
+      <ul style={{marginTop: 4, marginBottom: 4}}>
+        <li><b>iPhone:</b> iPhone 7, iPhone 7 Plus, iPhone 8, iPhone 8 Plus, iPhone X, iPhone XR, iPhone XS, iPhone XS Max, iPhone 11, iPhone 11 Pro, iPhone 11 Pro Max, iPhone SE (2nd gen and newer), iPhone 12, iPhone 12 Mini, iPhone 12 Pro, iPhone 12 Pro Max, iPhone 13, iPhone 13 Mini, iPhone 13 Pro, iPhone 13 Pro Max, iPhone 14, iPhone 14 Plus, iPhone 14 Pro, iPhone 14 Pro Max, and newer models</li>
+        <li><b>iPad:</b> iPad Pro (all generations), iPad Air (3rd gen and newer), iPad mini (5th gen and newer), iPad (5th gen and newer)</li>
+        <li><b>Mac:</b> All Mac computers running macOS High Sierra (10.13) or later</li>
+      </ul>
+      For a full list and more details, see <Link href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener">Wikipedia</Link> and <Link href="https://www.adaminsights.com/exploring-the-world-of-heic-apples-revolutionary-image-file-format/" target="_blank" rel="noopener">Adam Insights</Link>.
+      </>,
   },
   {
     question: 'Why should I convert HEIC to JPEG?',
