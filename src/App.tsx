@@ -12,14 +12,59 @@ import JSZip from 'jszip';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#2196f3',
+      main: '#007aff', // Apple blue
+      contrastText: '#fff',
     },
     background: {
-      default: '#f5f5f5',
+      default: '#f9f9f9', // very light gray
+      paper: '#fff',
     },
+    text: {
+      primary: '#222',
+      secondary: '#6e6e73',
+    },
+    divider: '#e0e0e0',
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Roboto", "Helvetica Neue", "Arial", sans-serif',
+    h4: {
+      fontWeight: 600,
+      letterSpacing: '-0.5px',
+    },
+    h5: {
+      fontWeight: 500,
+    },
+    subtitle1: {
+      fontWeight: 400,
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 24,
+          textTransform: 'none',
+          fontWeight: 500,
+          boxShadow: 'none',
+          paddingLeft: 24,
+          paddingRight: 24,
+        },
+        containedPrimary: {
+          backgroundColor: '#007aff',
+          '&:hover': {
+            backgroundColor: '#005ecb',
+          },
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: 16,
+          boxShadow: '0 2px 12px 0 rgba(0,0,0,0.03)',
+        },
+      },
+    },
   },
 });
 
