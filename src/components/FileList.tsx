@@ -4,7 +4,6 @@ import {
   Typography,
   IconButton,
   ListItemText,
-  CircularProgress,
   useTheme,
 } from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';
