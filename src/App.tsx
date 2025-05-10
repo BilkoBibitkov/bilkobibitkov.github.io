@@ -172,6 +172,11 @@ function App() {
               backgroundColor: isDragActive ? 'action.hover' : 'background.paper',
               border: '2px dashed',
               borderColor: isDragActive ? 'primary.main' : 'divider',
+              minHeight: 180,
+              height: { xs: 180, sm: 220, md: 260 },
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
             }}
           >
             <input {...getInputProps()} />

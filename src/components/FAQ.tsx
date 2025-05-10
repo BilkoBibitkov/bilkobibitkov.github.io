@@ -59,6 +59,11 @@ const faqItems = [
     answer:
       'Our converter works on all modern browsers including Chrome, Firefox, Safari, and Edge. For the best experience, we recommend using the latest version of your preferred browser.',
   },
+  {
+    question: 'Where are HEIC files commonly used or encountered?',
+    answer:
+      <>HEIC files are commonly encountered in major cities like <b>New York</b> and <b>San Francisco</b>, where many users rely on Apple devices for photography, business, and creative work. As these cities are technology and media hubs, compatibility with HEIC files is important for professionals and consumers alike. Whether you are sharing photos from a trip to New York or working on a creative project in San Francisco, converting HEIC to JPEG ensures your images are accessible everywhere.</>,
+  },
 ];
 
 const FAQ: React.FC = () => {
