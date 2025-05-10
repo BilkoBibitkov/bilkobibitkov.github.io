@@ -32,7 +32,7 @@ jobs:
         run: npm run build
 
       - name: Copy root redirect to build output
-        run: cp ../index.html ./build/
+        run: cp index.html ./build/
 
       - name: Upload production-ready build files
         uses: actions/upload-pages-artifact@v3
