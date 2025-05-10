@@ -8,6 +8,7 @@ import FileList from './components/FileList';
 import Header from './components/Header';
 import FAQ from './components/FAQ';
 import JSZip from 'jszip';
+import Footer from './components/Footer';
 
 const theme = createTheme({
   palette: {
@@ -231,6 +232,7 @@ function App() {
           <FAQ />
         </Box>
       </Container>
+      <Footer />
     </ThemeProvider>
   );
 }

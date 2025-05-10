@@ -74,6 +74,16 @@ const faqItems = [
         <span style={{fontSize: '0.95em'}}>Source: <a href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener">Wikipedia - High Efficiency Image File Format</a></span>
       </>,
   },
+  {
+    question: 'Are JPEG and JPG formats supported?',
+    answer:
+      <>Absolutely. Our converter outputs standard JPEG files (with .jpeg or .jpg extensions), ensuring maximum compatibility with all devices, operating systems, and image viewers. JPEG/JPG is the most widely supported image format worldwide.</>,
+  },
+  {
+    question: 'Is the code for this converter available for review?',
+    answer:
+      <>Yes, our code is open source and available for public review. You can view and contribute to the project on <Link href="https://github.com/BilkoBibitkov/heic-to-jpeg" target="_blank" rel="noopener">GitHub</Link>.</>,
+  },
 ];
 
 const FAQ: React.FC = () => {
