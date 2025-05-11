@@ -1,5 +1,5 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, Container, Box, Button, Card, CardContent, CardMedia, Link as MuiLink, Grid, Drawer, List, ListItem, ListItemIcon, ListItemText, Divider } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Toolbar, Typography, Container, Box, Button, Card, CardContent, CardMedia, Link as MuiLink, Grid, Drawer, List, ListItem, ListItemIcon, ListItemText, Divider } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import HomeIcon from '@mui/icons-material/Home';
 import heicToJpgIcon from './assets/heic_to_jpg_icon.png';
@@ -36,6 +36,29 @@ function Footer() {
       </Container>
     </Box>
   );
+}
+
+function AdsenseBanner() {
+  useEffect(() => {
+    if (window.adsbygoogle && Array.isArray(window.adsbygoogle)) {
+      window.adsbygoogle.push({});
+    }
+  }, []);
+  return (
+    <ins className="adsbygoogle"
+      style={{ display: 'block' }}
+      data-ad-client="ca-pub-1258025940951801"
+      data-ad-slot="5573198755"
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    ></ins>
+  );
+}
+
+declare global {
+  interface Window {
+    adsbygoogle: unknown[];
+  }
 }
 
 function App() {
@@ -81,6 +104,10 @@ function App() {
           </List>
         </Box>
       </Drawer>
+      {/* Left Ad Banner */}
+      <Box sx={{ width: 90, minWidth: 60, display: { xs: 'none', md: 'flex' }, alignItems: 'flex-start', pt: 6, pl: 1 }}>
+        <AdsenseBanner />
+      </Box>
       <Box sx={{ flex: 1, pl: { sm: 0, md: 2 }, display: 'flex', flexDirection: 'column' }}>
         <Container maxWidth="md" sx={{ mt: 6, mb: 8, flex: 1 }}>
           {page === 'home' && (
@@ -167,6 +194,10 @@ function App() {
           )}
         </Container>
         <Footer />
+      </Box>
+      {/* Right Ad Banner */}
+      <Box sx={{ width: 90, minWidth: 60, display: { xs: 'none', md: 'flex' }, alignItems: 'flex-start', pt: 6, pr: 1 }}>
+        <AdsenseBanner />
       </Box>
     </Box>
   );
