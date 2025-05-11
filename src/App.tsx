@@ -52,7 +52,8 @@ function App() {
       background: 'linear-gradient(180deg, #f9f9f9 0%, #e3eafc 100%)', 
       minHeight: '100vh',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      fontFamily: `-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif` // Apple-like font
     }}>
       <AppBar position="static" color="transparent" elevation={0} sx={{ borderBottom: '1px solid #e0e0e0' }}>
         <Toolbar>
@@ -85,6 +86,7 @@ function App() {
                         flexDirection: { xs: 'column', sm: 'row' },
                         boxShadow: '0 4px 24px 0 rgba(0,0,0,0.07)',
                         borderRadius: 4,
+                        border: '1.5px solid #e0e0e0', // Add border
                         transition: 'transform 0.2s, box-shadow 0.2s',
                         '&:hover': {
                           transform: 'translateY(-4px) scale(1.01)',
@@ -96,9 +98,17 @@ function App() {
                         component="img"
                         image={project.image}
                         alt={project.name}
-                        sx={{ width: { xs: '100%', sm: 340 }, height: 220, objectFit: 'cover', borderRadius: { sm: '16px 0 0 16px', xs: '16px 16px 0 0' } }}
+                        sx={{ 
+                          width: { xs: '100%', sm: 120 }, // Shrink image
+                          height: 120, // Shrink image
+                          objectFit: 'contain', // Show full icon
+                          borderRadius: { sm: '16px 0 0 16px', xs: '16px 16px 0 0' },
+                          border: '1.5px solid #e0e0e0', // Add border around image
+                          background: '#fff',
+                          m: 2 // Add margin
+                        }}
                       />
-                      <CardContent sx={{ flex: 1 }}>
+                      <CardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <Typography variant="h5" sx={{ fontWeight: 600 }} gutterBottom>
                           {project.name}
                         </Typography>
@@ -109,7 +119,7 @@ function App() {
                           variant="contained"
                           color="primary"
                           endIcon={<ArrowForwardIcon />}
-                          sx={{ borderRadius: 3, px: 4, py: 1.5, fontWeight: 500 }}
+                          sx={{ borderRadius: 3, px: 4, py: 0.75, fontWeight: 500, mt: 2, width: '100%', minHeight: 36, fontSize: 18 }}
                           onClick={() => window.location.href = project.link}
                         >
                           Visit Project
