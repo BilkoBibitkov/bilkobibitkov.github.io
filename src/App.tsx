@@ -6,7 +6,6 @@ import { useDropzone } from 'react-dropzone';
 import heic2any from 'heic2any';
 import FileList from './components/FileList';
 import FAQ from './components/FAQ';
-import Feedback from './components/Feedback';
 import JSZip from 'jszip';
 import Footer from './components/Footer';
 
@@ -251,7 +250,6 @@ function App() {
             )}
 
             <FAQ />
-            <Feedback />
           </Box>
         </Container>
         <Footer />
