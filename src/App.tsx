@@ -2,12 +2,13 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Container, Box, Button, Card, CardContent, CardMedia, Link as MuiLink, Grid } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import HomeIcon from '@mui/icons-material/Home';
+import heicToJpgIcon from './assets/heic_to_jpg_icon.png';
 
 const PROJECTS = [
   {
     name: 'HEIC to JPEG Converter',
     description: 'Convert your iPhone HEIC photos to JPEG format instantly, in your browser. No uploads, no privacy risk, and completely free. Drag & drop, batch conversion, and more.',
-    image: 'https://raw.githubusercontent.com/BilkoBibitkov/heic-to-jpeg/main/public/og-image.png', // Replace with your actual screenshot URL or a placeholder
+    image: heicToJpgIcon, // Use local asset
     link: '/heic-to-jpeg/',
     tags: ['Image', 'Privacy', 'Free', 'No Uploads'],
   },
@@ -109,7 +110,7 @@ function App() {
                           color="primary"
                           endIcon={<ArrowForwardIcon />}
                           sx={{ borderRadius: 3, px: 4, py: 1.5, fontWeight: 500 }}
-                          onClick={() => handleNav('heic-to-jpeg')}
+                          onClick={() => window.location.href = project.link}
                         >
                           Visit Project
                         </Button>
