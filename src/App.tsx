@@ -13,6 +13,30 @@ const PROJECTS = [
   },
 ];
 
+function Footer() {
+  return (
+    <Box
+      component="footer"
+      sx={{
+        py: 3,
+        px: 2,
+        mt: 'auto',
+        backgroundColor: (theme) => theme.palette.grey[100],
+        borderTop: '1px solid',
+        borderColor: 'divider',
+      }}
+    >
+      <Container maxWidth="md">
+        <Typography variant="body2" color="text.secondary" align="center">
+          <MuiLink href="/" color="inherit" underline="hover">
+            Back to Root Directory
+          </MuiLink>
+        </Typography>
+      </Container>
+    </Box>
+  );
+}
+
 function App() {
   // Simulate navigation state (for SPA feel)
   const [page, setPage] = React.useState<'home' | 'heic-to-jpeg'>('home');
@@ -23,7 +47,12 @@ function App() {
   };
 
   return (
-    <Box sx={{ background: 'linear-gradient(180deg, #f9f9f9 0%, #e3eafc 100%)', minHeight: '100vh' }}>
+    <Box sx={{ 
+      background: 'linear-gradient(180deg, #f9f9f9 0%, #e3eafc 100%)', 
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
       <AppBar position="static" color="transparent" elevation={0} sx={{ borderBottom: '1px solid #e0e0e0' }}>
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 700, color: '#222', cursor: 'pointer' }} onClick={() => handleNav('home')}>
@@ -33,7 +62,7 @@ function App() {
           <Button color="inherit" onClick={() => handleNav('heic-to-jpeg')}>HEIC to JPEG</Button>
         </Toolbar>
       </AppBar>
-      <Container maxWidth="md" sx={{ mt: 6, mb: 8 }}>
+      <Container maxWidth="md" sx={{ mt: 6, mb: 8, flex: 1 }}>
         {page === 'home' && (
           <>
             <Typography variant="h3" component="h1" align="center" gutterBottom sx={{ fontWeight: 700 }}>
@@ -108,6 +137,7 @@ function App() {
           </Box>
         )}
       </Container>
+      <Footer />
     </Box>
   );
 }
