@@ -28,6 +28,15 @@ const FileList: React.FC<FileListProps> = ({ files, isConverting, grid }) => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    // Track individual file download
+    if (window.gtag) {
+      window.gtag('event', 'file_download', {
+        'event_category': 'Download',
+        'event_label': 'Single File',
+        'value': 1
+      });
+    }
   };
 
   if (grid) {

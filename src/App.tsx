@@ -6,6 +6,7 @@ import { useDropzone } from 'react-dropzone';
 import heic2any from 'heic2any';
 import FileList from './components/FileList';
 import FAQ from './components/FAQ';
+import Feedback from './components/Feedback';
 import JSZip from 'jszip';
 import Footer from './components/Footer';
 
@@ -93,6 +94,15 @@ function App() {
     const convertedFiles: ConvertedFile[] = [];
     const errorList: string[] = [];
 
+    // Track file drop event
+    if (window.gtag) {
+      window.gtag('event', 'files_dropped', {
+        'event_category': 'Conversion',
+        'event_label': 'Files Dropped',
+        'value': acceptedFiles.length
+      });
+    }
+
     for (let i = 0; i < acceptedFiles.length; i++) {
       if (errorList.length >= MAX_ERRORS) {
         setAbortWarning(true);
@@ -147,6 +157,15 @@ function App() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    // Track ZIP download event
+    if (window.gtag) {
+      window.gtag('event', 'zip_download', {
+        'event_category': 'Download',
+        'event_label': 'Download All',
+        'value': files.length
+      });
+    }
   };
 
   return (
@@ -232,6 +251,7 @@ function App() {
             )}
 
             <FAQ />
+            <Feedback />
           </Box>
         </Container>
         <Footer />
