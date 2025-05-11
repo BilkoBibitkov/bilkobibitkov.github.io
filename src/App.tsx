@@ -72,11 +72,6 @@ function App() {
                         <Typography variant="h5" sx={{ fontWeight: 600 }} gutterBottom>
                           {project.name}
                         </Typography>
-                        <Box sx={{ mb: 1, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                          {project.tags?.map(tag => (
-                            <Chip key={tag} label={tag} size="small" color="primary" variant="outlined" />
-                          ))}
-                        </Box>
                         <Typography variant="body1" color="text.secondary" paragraph>
                           {project.description}
                         </Typography>
