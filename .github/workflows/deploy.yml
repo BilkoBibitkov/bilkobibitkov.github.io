@@ -19,6 +19,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          path: bilkobibitkov.github.io
+
+      - name: Debug - List Directory Contents
+        run: |
+          pwd
+          ls -la
+          cd bilkobibitkov.github.io
+          ls -la
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -26,15 +35,17 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
+        working-directory: bilkobibitkov.github.io
         run: npm install
 
       - name: Build
+        working-directory: bilkobibitkov.github.io
         run: npm run build
 
       - name: Upload production-ready build files
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: bilkobibitkov.github.io/build
 
   deploy:
     needs: build
