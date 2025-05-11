@@ -88,9 +88,6 @@ function App() {
       >
         <Toolbar />
         <Box sx={{ overflow: 'auto', mt: 2 }}>
-          <Typography variant="h6" sx={{ fontWeight: 700, color: '#222', px: 2, mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-            <HomeIcon sx={{ verticalAlign: 'middle' }} /> Hobbies Playground
-          </Typography>
           <Divider />
           <List>
             <ListItem button selected={page === 'home'} onClick={() => handleNav('home')}>
