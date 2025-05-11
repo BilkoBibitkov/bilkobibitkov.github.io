@@ -54,9 +54,9 @@ const FileList: React.FC<FileListProps> = ({ files, isConverting, grid }) => {
               md: '1fr 1fr 1fr',
             },
             gap: 2,
-            maxHeight: 320,
+            maxHeight: 480,
+            overflowY: 'auto',
             overflowX: 'auto',
-            overflowY: 'hidden',
             whiteSpace: 'nowrap',
             pb: 1,
           }}

@@ -15,7 +15,7 @@ const faqItems = [
   {
     question: 'When did Apple use HEIC first?',
     answer:
-      <>Apple first adopted the HEIC format as the default for photos with the release of <b>iOS 11</b> in 2017. This change allowed iPhones and iPads to save images in a more efficient format, reducing file sizes while maintaining quality. Read more at <Link href="https://www.reddit.com/r/YouShouldKnow/comments/uxsp2q/ysk_apple_iphones_have_started_saving_images_as/" target="_blank" rel="noopener noreferrer">Reddit</Link> and <Link href="https://www.adaminsights.com/exploring-the-world-of-heic-apples-revolutionary-image-file-format/" target="_blank" rel="noopener noreferrer">Adam Insights</Link>.</>,
+      <>Apple first adopted the HEIC format as the default for photos with the release of <b>iOS 11</b> in 2017. This change allowed iPhones and iPads to save images in a more efficient format, reducing file sizes while maintaining quality. Read more at <Link href="https://www.reddit.com/r/YouShouldKnow/comments/uxsp2q/ysk_apple_iphones_have_started_saving_images_as/" target="_blank" rel="noopener noreferrer">Reddit</Link>.</>,
   },
   {
     question: 'Which Apple devices create HEIC files?',
@@ -26,7 +26,7 @@ const faqItems = [
         <li><b>iPad:</b> iPad Pro (all generations), iPad Air (3rd gen and newer), iPad mini (5th gen and newer), iPad (5th gen and newer)</li>
         <li><b>Mac:</b> All Mac computers running macOS High Sierra (10.13) or later</li>
       </ul>
-      For a full list and more details, see <Link href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener noreferrer">Wikipedia</Link> and <Link href="https://www.adaminsights.com/exploring-the-world-of-heic-apples-revolutionary-image-file-format/" target="_blank" rel="noopener noreferrer">Adam Insights</Link>.
+      For a full list and more details, see <Link href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format" target="_blank" rel="noopener noreferrer">Wikipedia</Link>.
       </>,
   },
   {
