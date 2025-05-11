@@ -6,8 +6,8 @@ import heicToJpgIcon from './assets/heic_to_jpg_icon.png';
 
 const PROJECTS = [
   {
-    name: 'HEIC to JPEG Converter',
-    description: 'Convert your iPhone HEIC photos to JPEG format instantly, in your browser. No uploads, no privacy risk, and completely free. Drag & drop, batch conversion, and more.',
+    name: 'HEIC to JPG Converter',
+    description: 'Convert your iPhone HEIC photos to JPG format instantly, in your browser. No uploads, no privacy risk, and completely free. Drag & drop, batch conversion, and more.',
     image: heicToJpgIcon, // Use local asset
     link: '/heic-to-jpeg/',
     tags: ['Image', 'Privacy', 'Free', 'No Uploads'],
@@ -61,7 +61,7 @@ function App() {
             <HomeIcon sx={{ mr: 1, verticalAlign: 'middle' }} /> Hobbies Playground
           </Typography>
           <Button color="inherit" onClick={() => handleNav('home')}>Home</Button>
-          <Button color="inherit" onClick={() => handleNav('heic-to-jpeg')}>HEIC to JPEG</Button>
+          <Button color="inherit" onClick={() => handleNav('heic-to-jpeg')}>HEIC to JPG</Button>
         </Toolbar>
       </AppBar>
       <Container maxWidth="md" sx={{ mt: 6, mb: 8, flex: 1 }}>
@@ -135,7 +135,7 @@ function App() {
         {page === 'heic-to-jpeg' && (
           <Box sx={{ mt: 8, textAlign: 'center' }}>
             <Typography variant="h4" sx={{ fontWeight: 600, mb: 2 }}>
-              HEIC to JPEG Converter
+              HEIC to JPG Converter
             </Typography>
             <Typography variant="body1" color="text.secondary" paragraph>
               <MuiLink href="/heic-to-jpeg/" underline="always" color="primary">
