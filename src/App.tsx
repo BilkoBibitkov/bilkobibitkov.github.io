@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Container, Box, Typography, Paper, Alert, LinearProgress, Button, Stack } from '@mui/material';
+import { Container, Box, Typography, Paper, Alert, LinearProgress, Button, Stack, Dialog, DialogTitle, DialogContent, DialogActions, FormControl, InputLabel, Select, MenuItem, Slider, Checkbox, FormControlLabel, TextField } from '@mui/material';
 import { useDropzone } from 'react-dropzone';
 import heic2any from 'heic2any';
 import FileList from './components/FileList';
@@ -83,6 +83,11 @@ function App() {
   const [errors, setErrors] = useState<string[]>([]);
   const [progress, setProgress] = useState(0);
   const [abortWarning, setAbortWarning] = useState(false);
+  const [configOpen, setConfigOpen] = useState(false);
+  const [outputFormat, setOutputFormat] = useState<'image/jpeg' | 'image/png' | 'image/gif'>('image/jpeg');
+  const [quality, setQuality] = useState(1);
+  const [multiple, setMultiple] = useState(false);
+  const [gifDelay, setGifDelay] = useState(100);
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     if (acceptedFiles.length === 0) return;
@@ -112,17 +117,37 @@ function App() {
         if (file.size > MAX_FILE_SIZE) {
           throw new Error(`File ${file.name} is too large. Maximum size is 10MB.`);
         }
-        const convertedBlob = await heic2any({
+        const options: any = {
           blob: file,
-          toType: 'image/jpeg',
-          quality: 0.8,
-        }) as Blob;
-        const url = URL.createObjectURL(convertedBlob);
-        convertedFiles.push({
-          name: file.name.replace(/\.heic$/i, '.jpg'),
-          url,
-          blob: convertedBlob,
-        });
+          toType: outputFormat,
+        };
+        if (outputFormat === 'image/jpeg') {
+          options.quality = quality;
+        }
+        if (outputFormat === 'image/gif') {
+          options.gifOptions = { delay: gifDelay };
+        }
+        if (multiple) {
+          options.multiple = true;
+        }
+        const result = await heic2any(options);
+        if (Array.isArray(result)) {
+          result.forEach((convertedBlob: Blob, idx: number) => {
+            const url = URL.createObjectURL(convertedBlob);
+            convertedFiles.push({
+              name: file.name.replace(/\.heic$/i, `_${idx + 1}.${outputFormat === 'image/png' ? 'png' : outputFormat === 'image/gif' ? 'gif' : 'jpg'}`),
+              url,
+              blob: convertedBlob,
+            });
+          });
+        } else {
+          const url = URL.createObjectURL(result as Blob);
+          convertedFiles.push({
+            name: file.name.replace(/\.heic$/i, outputFormat === 'image/png' ? '.png' : outputFormat === 'image/gif' ? '.gif' : '.jpg'),
+            url,
+            blob: result as Blob,
+          });
+        }
       } catch (error) {
         const msg = error instanceof Error ? error.message : 'Error converting file';
         errorList.push(`${file.name}: ${msg}`);
@@ -133,7 +158,7 @@ function App() {
     setErrors(errorList);
     setIsConverting(false);
     setProgress(0);
-  }, []);
+  }, [outputFormat, quality, gifDelay, multiple]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -210,6 +235,64 @@ function App() {
                 No file number limit, up to 10MB each
               </Typography>
             </Paper>
+
+            <Box sx={{ mt: 2, mb: 1, display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Button variant="outlined" onClick={() => setConfigOpen(true)}>
+                Advanced Conversion Configuration
+              </Button>
+              <Typography variant="body2" color="text.secondary">
+                By default, we use the highest quality possible.
+              </Typography>
+            </Box>
+
+            <Dialog open={configOpen} onClose={() => setConfigOpen(false)}>
+              <DialogTitle>Advanced Conversion Configuration</DialogTitle>
+              <DialogContent sx={{ minWidth: 320 }}>
+                <FormControl fullWidth sx={{ mb: 2 }}>
+                  <InputLabel>Output Format</InputLabel>
+                  <Select
+                    value={outputFormat}
+                    label="Output Format"
+                    onChange={e => setOutputFormat(e.target.value as any)}
+                  >
+                    <MenuItem value="image/jpeg">JPEG</MenuItem>
+                    <MenuItem value="image/png">PNG</MenuItem>
+                    <MenuItem value="image/gif">GIF</MenuItem>
+                  </Select>
+                </FormControl>
+                {outputFormat === 'image/jpeg' && (
+                  <Box sx={{ mb: 2 }}>
+                    <Typography gutterBottom>JPEG Quality</Typography>
+                    <Slider
+                      value={quality}
+                      min={0.1}
+                      max={1}
+                      step={0.01}
+                      onChange={(_, v) => setQuality(v as number)}
+                      valueLabelDisplay="auto"
+                    />
+                  </Box>
+                )}
+                <FormControlLabel
+                  control={<Checkbox checked={multiple} onChange={e => setMultiple(e.target.checked)} />}
+                  label="Convert all images in HEIC (if multiple)"
+                  sx={{ mb: 2 }}
+                />
+                {outputFormat === 'image/gif' && (
+                  <TextField
+                    label="GIF Frame Delay (ms)"
+                    type="number"
+                    value={gifDelay}
+                    onChange={e => setGifDelay(Number(e.target.value))}
+                    fullWidth
+                    sx={{ mb: 2 }}
+                  />
+                )}
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={() => setConfigOpen(false)}>Close</Button>
+              </DialogActions>
+            </Dialog>
 
             {isConverting && (
               <Box sx={{ mt: 4 }}>
