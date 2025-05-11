@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://bilkobibitkov.github.io/heic-to-jpeg/sitemap.xml
