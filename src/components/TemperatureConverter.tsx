@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, TextField, Paper, Stack } from '@mui/material';
+import { Box, Paper, TextField, Typography, Stack } from '@mui/material';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import TemperatureFaq from './TemperatureFaq';
 
@@ -46,10 +46,13 @@ const TemperatureConverter = () => {
   return (
     <Box sx={{ mt: 4 }}>
       <Typography variant="h4" component="h1" gutterBottom align="center">
-        Temperature Converter
+        Celsius vs Fahrenheit: The Great Temperature Debate
       </Typography>
       <Typography variant="subtitle1" align="center" color="text.secondary" paragraph>
-        Convert between Celsius and Fahrenheit with ease. Our simple and accurate converter helps you quickly switch between these two temperature scales, whether you're cooking, traveling, or working with international measurements.
+        As a European in America, I've learned that 32°F is freezing, 212°F is boiling, and everything in between is... well, let's just say it's not as intuitive as good old Celsius! Whether you're following a European recipe that says "bake at 180°C" or trying to figure out if it's sweater weather at 50°F, this converter has got your back.
+      </Typography>
+      <Typography variant="body1" align="center" color="text.secondary" paragraph>
+        Fun fact: Did you know that 0°C is when water freezes and 100°C is when it boils? Makes perfect sense, right? Meanwhile, in Fahrenheit land, we have... 32°F and 212°F. Because why make things simple when you can make them complicated? 😉
       </Typography>
 
       <Paper sx={{ p: 3, mb: 4 }}>
@@ -60,6 +63,7 @@ const TemperatureConverter = () => {
             value={celsius}
             onChange={(e) => handleCelsiusChange(e.target.value)}
             fullWidth
+            helperText="The sensible temperature scale"
           />
           <Typography variant="h5">=</Typography>
           <TextField
@@ -68,6 +72,7 @@ const TemperatureConverter = () => {
             value={fahrenheit}
             onChange={(e) => handleFahrenheitChange(e.target.value)}
             fullWidth
+            helperText="The... other temperature scale"
           />
         </Stack>
       </Paper>
@@ -75,6 +80,9 @@ const TemperatureConverter = () => {
       <Paper sx={{ p: 3, mb: 4 }}>
         <Typography variant="h6" gutterBottom>
           Temperature Comparison Chart
+        </Typography>
+        <Typography variant="body2" color="text.secondary" paragraph>
+          A visual guide to help you understand why Europeans think Americans are a bit... special when it comes to temperature.
         </Typography>
         <Box sx={{ width: '100%', height: 300 }}>
           <ResponsiveContainer>

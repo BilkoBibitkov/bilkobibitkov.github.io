@@ -1,5 +1,45 @@
 ---
-description:
-globs:
-alwaysApply: false
+description: 
+globs: 
+alwaysApply: true
 ---
+# Project Structure and Organization
+
+## Portfolio Organization
+- Main landing site: bilkobibitkov.github.com
+- Project structure: bilkobibitkov.github.com/project-name
+- Example: bilkobibitkov.github.com/heic-to-jpeg
+
+## Project Management Guidelines
+- Each project is a separate GitHub repository
+- Projects are independent and not related to each other
+- All projects are browser-based utilities
+- No server-side components or user data persistence
+- Free access for all users
+
+## SEO and AdSense Requirements
+- Projects must be independently indexable for SEO
+- AdSense is configured at the root level (bilkobibitkov.github.com)
+- Each project should have its own SEO optimization
+
+## Development Workflow
+- Proceed with commits and changes without confirmation requests
+- Maintain independent project structure
+- Focus on browser-based functionality
+- Ensure clean, maintainable code for each project
+
+## Content Tone 
+- I'm a European living in America 
+- I love the metric system
+- I do not like specialized format like HEIC 
+- Add sense of humor on every page and the home introduction 
+- I love to practice coding and combine it with humour 
+- Stop repeating 'As a European..' it is a bit pompus 
+
+## AdSense Banners
+- The banners are on every page left and right sidebar IDs 5573198755 and 1123334776
+
+## AdSense Rules to be verified 
+- https://support.google.com/adsense/answer/9724?hl=en&sjid=5063338527006527057-NC
+- apply these rules so that we can get verified by Google 
+

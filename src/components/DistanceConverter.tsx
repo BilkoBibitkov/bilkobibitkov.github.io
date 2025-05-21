@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, TextField, Paper, Stack } from '@mui/material';
+import { Box, Paper, TextField, Typography, Stack } from '@mui/material';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import DistanceFaq from './DistanceFaq';
 
@@ -49,10 +49,13 @@ const DistanceConverter = () => {
   return (
     <Box sx={{ mt: 4 }}>
       <Typography variant="h4" component="h1" gutterBottom align="center">
-        Distance Converter
+        Miles vs Kilometers: The Metric System Strikes Back
       </Typography>
       <Typography variant="subtitle1" align="center" color="text.secondary" paragraph>
-        Convert between miles and kilometers instantly. Whether you're planning a road trip, following international recipes, or working with global measurements, our converter makes it easy to switch between these common distance units.
+        As a European in America, I've learned that a "quick 5-mile drive" is actually 8 kilometers, and that's just the beginning of the confusion! Whether you're planning a road trip across the States or trying to understand why your European GPS keeps telling you to turn in meters, this converter will help you navigate the great unit divide.
+      </Typography>
+      <Typography variant="body1" align="center" color="text.secondary" paragraph>
+        Pro tip: If you're ever lost in America, just remember that 1 mile is roughly 1.6 kilometers. Or if you're like me, you'll just keep your phone's GPS set to kilometers and let it do the math for you! 😉
       </Typography>
 
       <Paper sx={{ p: 3, mb: 4 }}>
@@ -63,6 +66,7 @@ const DistanceConverter = () => {
             value={miles}
             onChange={(e) => handleMilesChange(e.target.value)}
             fullWidth
+            helperText="The American way"
           />
           <Typography variant="h5">=</Typography>
           <TextField
@@ -71,6 +75,7 @@ const DistanceConverter = () => {
             value={kilometers}
             onChange={(e) => handleKilometersChange(e.target.value)}
             fullWidth
+            helperText="The sensible way"
           />
         </Stack>
       </Paper>
@@ -78,6 +83,9 @@ const DistanceConverter = () => {
       <Paper sx={{ p: 3, mb: 4 }}>
         <Typography variant="h6" gutterBottom>
           Distance Comparison Chart
+        </Typography>
+        <Typography variant="body2" color="text.secondary" paragraph>
+          A visual guide to help you understand why Europeans think the metric system is superior (spoiler: it is!).
         </Typography>
         <Box sx={{ width: '100%', height: 300 }}>
           <ResponsiveContainer>

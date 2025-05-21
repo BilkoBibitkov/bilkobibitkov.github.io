@@ -1,54 +1,35 @@
 import React from 'react';
-import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Box, Typography, Paper } from '@mui/material';
 
-const DistanceFaq: React.FC = () => {
-  return (
-    <Box sx={{ mt: 4 }}>
-      <Typography variant="h5" gutterBottom>
-        Frequently Asked Questions
-      </Typography>
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>What is the difference between miles and kilometers?</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Miles and kilometers are both units of distance, but they're used in different parts of the world. 
-            One mile equals approximately 1.60934 kilometers. Miles are primarily used in the United States and 
-            the United Kingdom, while kilometers are used in most other countries as part of the metric system.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+const faqs = [
+  {
+    question: 'What is the difference between miles and kilometers?',
+    answer: 'Miles are used in the US and UK, while kilometers are used in most other countries. 1 mile is approximately 1.60934 kilometers.'
+  },
+  {
+    question: 'Why do some countries use miles and others use kilometers?',
+    answer: 'The metric system (kilometers) is used by most of the world for its simplicity and consistency. Miles are part of the imperial system, which is still used in the US and a few other countries.'
+  },
+  {
+    question: 'How accurate is the conversion?',
+    answer: 'Our converter uses the exact conversion factor of 1 mile = 1.60934 kilometers, which is the internationally accepted standard. The results are accurate to 5 decimal places.'
+  }
+];
 
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>Why do different countries use different units?</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            The difference in units stems from historical and cultural factors. The metric system (using kilometers) 
-            was developed during the French Revolution and was designed to be a universal system. The imperial system 
-            (using miles) has its roots in ancient Roman measurements and was widely used in the British Empire.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+const DistanceFaq = () => (
+  <Box sx={{ mt: 6 }}>
+    <Typography variant="h5" component="h2" gutterBottom>
+      Frequently Asked Questions
+    </Typography>
+    {faqs.map((faq, idx) => (
+      <Paper key={idx} sx={{ p: 2, mb: 2 }}>
+        <Typography variant="subtitle1" sx={{ fontWeight: 600 }} gutterBottom>
+          {faq.question}
+        </Typography>
+        <Typography color="text.secondary">{faq.answer}</Typography>
+      </Paper>
+    ))}
+  </Box>
+);
 
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>How accurate is the conversion?</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Our converter uses the exact conversion factor of 1 mile = 1.60934 kilometers, which is the 
-            internationally accepted standard. The results are accurate to 5 decimal places, which is more 
-            than sufficient for most practical purposes.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-    </Box>
-  );
-};
-
-export default DistanceFaq;
-export {}; 
+export default DistanceFaq; 

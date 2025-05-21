@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
-import { Box, Typography, Paper, Alert, LinearProgress, Button, Stack } from '@mui/material';
+import { Box, Paper, Typography, Button, CircularProgress, Alert, LinearProgress, Stack } from '@mui/material';
 import { useDropzone } from 'react-dropzone';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import heic2any from 'heic2any';
 import HeicFaq from './HeicFaq';
 
@@ -88,10 +89,13 @@ const HeicConverter = () => {
   return (
     <Box sx={{ mt: 4 }}>
       <Typography variant="h4" component="h1" gutterBottom align="center">
-        Convert Your iPhone Photos to JPEG - Simple & Free!
+        Free Your Photos from Apple's HEIC Jail!
       </Typography>
       <Typography variant="subtitle1" align="center" color="text.secondary" paragraph>
-        Effortlessly convert your iPhone HEIC photos to universally compatible JPEG format. Our professional-grade tool processes all images <b>entirely within your browser</b>—<b>no uploads, no server storage, and no compromise to your privacy</b>. Simply drag and drop your HEIC images and download high-quality JPEGs instantly.
+        As a European who values open standards, I've had enough of Apple's proprietary HEIC format. It's like they're saying "Hey, let's make a new format that nobody else uses!" Well, not anymore! This tool will liberate your photos faster than you can say "Why can't we all just use JPEG?" 
+      </Typography>
+      <Typography variant="body1" align="center" color="text.secondary" paragraph>
+        Simply drag and drop your HEIC files, and watch them transform into good old-fashioned JPEGs. No uploads, no server storage, and definitely no compromise to your privacy - because in Europe, we take our privacy seriously! Plus, it's completely free, because who needs another subscription service in their life?
       </Typography>
 
       <Paper sx={{ p: 3, mb: 4 }}>
@@ -110,10 +114,10 @@ const HeicConverter = () => {
         >
           <input {...getInputProps()} />
           <Typography variant="h6" gutterBottom>
-            {isDragActive ? 'Drop the files here' : 'Drag & drop HEIC files here, or click to select'}
+            {isDragActive ? 'Drop those HEIC files here!' : 'Drag & drop your HEIC files here, or click to select'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Maximum file size: 10MB
+            Maximum file size: 10MB (because even Europeans have limits!)
           </Typography>
         </Box>
       </Paper>
@@ -121,11 +125,11 @@ const HeicConverter = () => {
       {isConverting && (
         <Paper sx={{ p: 3, mb: 4 }}>
           <Typography variant="h6" gutterBottom>
-            Converting Files...
+            Converting Your Photos...
           </Typography>
           <LinearProgress variant="determinate" value={progress} sx={{ mb: 2 }} />
           <Typography variant="body2" color="text.secondary">
-            {Math.round(progress)}% complete
+            {Math.round(progress)}% complete (almost as fast as European trains!)
           </Typography>
         </Paper>
       )}
@@ -133,7 +137,7 @@ const HeicConverter = () => {
       {errors.length > 0 && (
         <Paper sx={{ p: 3, mb: 4 }}>
           <Typography variant="h6" color="error" gutterBottom>
-            Errors ({errors.length})
+            Oops! We Hit a Speed Bump ({errors.length})
           </Typography>
           <Stack spacing={1}>
             {errors.map((error, index) => (
@@ -148,7 +152,7 @@ const HeicConverter = () => {
       {convertedFiles.length > 0 && (
         <Paper sx={{ p: 3, mb: 4 }}>
           <Typography variant="h6" gutterBottom>
-            Converted Files ({convertedFiles.length})
+            Successfully Converted Files ({convertedFiles.length})
           </Typography>
           <Stack spacing={2}>
             {convertedFiles.map((file, index) => (
@@ -172,7 +176,7 @@ const HeicConverter = () => {
                 onClick={handleDownloadZip}
                 sx={{ mt: 2 }}
               >
-                Download All as ZIP
+                Download All as ZIP (European efficiency!)
               </Button>
             )}
           </Stack>
