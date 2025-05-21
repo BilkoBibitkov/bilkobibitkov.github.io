@@ -1,13 +1,21 @@
-import React, { useState, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Container, Box, Typography, Paper, Alert, LinearProgress, Button, Stack } from '@mui/material';
-import { useDropzone } from 'react-dropzone';
-import heic2any from 'heic2any';
-import FileList from './components/FileList';
-import FAQ from './components/FAQ';
-import JSZip from 'jszip';
-import Footer from './components/Footer';
+import { Container, Box, Typography, Toolbar, Drawer, List, ListItem, ListItemIcon, ListItemText, Grid, Card, CardContent, CardActionArea } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import ImageIcon from '@mui/icons-material/Image';
+import ThermostatIcon from '@mui/icons-material/Thermostat';
+import StraightenIcon from '@mui/icons-material/Straighten';
+import TemperatureConverter from './components/TemperatureConverter';
+import DistanceConverter from './components/DistanceConverter';
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+import HeicConverter from './components/HeicConverter';
+
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
 
 const theme = createTheme({
   palette: {
@@ -68,194 +76,140 @@ const theme = createTheme({
   },
 });
 
-interface ConvertedFile {
-  name: string;
-  url: string;
-  blob: Blob;
-}
+const drawerWidth = 240;
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB in bytes
-const MAX_ERRORS = 10;
+const tools = [
+  {
+    title: 'HEIC to JPEG Converter',
+    description: 'Convert HEIC images to JPEG format easily and securely.',
+    icon: <ImageIcon sx={{ fontSize: 40 }} />,
+    path: '/heic-converter',
+    component: HeicConverter
+  },
+  {
+    title: 'Temperature Converter',
+    description: 'Convert between Celsius and Fahrenheit with ease.',
+    icon: <ThermostatIcon sx={{ fontSize: 40 }} />,
+    path: '/temperature-converter',
+    component: TemperatureConverter
+  },
+  {
+    title: 'Distance Converter',
+    description: 'Convert between miles and kilometers instantly.',
+    icon: <StraightenIcon sx={{ fontSize: 40 }} />,
+    path: '/distance-converter',
+    component: DistanceConverter
+  }
+];
 
-function App() {
-  const [files, setFiles] = useState<ConvertedFile[]>([]);
-  const [isConverting, setIsConverting] = useState(false);
-  const [errors, setErrors] = useState<string[]>([]);
-  const [progress, setProgress] = useState(0);
-  const [abortWarning, setAbortWarning] = useState(false);
+const HomePage = () => {
+  return (
+    <Container maxWidth="lg" sx={{ mt: 4 }}>
+      <Typography variant="h4" component="h1" gutterBottom align="center">
+        Welcome to Our Conversion Tools
+      </Typography>
+      <Typography variant="subtitle1" align="center" color="text.secondary" paragraph>
+        Your one-stop solution for all your conversion needs. We provide simple, fast, and secure tools to help you convert various formats and units. All conversions happen right in your browser - your data never leaves your device.
+      </Typography>
+      <Typography variant="body1" align="center" color="text.secondary" paragraph>
+        Our mission is to make conversion tools accessible to everyone. Whether you're converting HEIC photos from your iPhone, temperature units for cooking, or distance measurements for travel, we've got you covered with our easy-to-use, privacy-focused tools.
+      </Typography>
+      <Grid container spacing={4} sx={{ mt: 2 }}>
+        {tools.map((tool) => (
+          <Grid item xs={12} sm={6} md={4} key={tool.path}>
+            <Card sx={{ height: '100%' }}>
+              <CardActionArea component={Link} to={tool.path} sx={{ height: '100%' }}>
+                <CardContent sx={{ textAlign: 'center' }}>
+                  <Box sx={{ mb: 2 }}>{tool.icon}</Box>
+                  <Typography variant="h6" component="h2" gutterBottom>
+                    {tool.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {tool.description}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
+  );
+};
 
-  const onDrop = useCallback(async (acceptedFiles: File[]) => {
-    if (acceptedFiles.length === 0) return;
-    setErrors([]);
-    setAbortWarning(false);
-    setIsConverting(true);
-    setProgress(0);
-    const convertedFiles: ConvertedFile[] = [];
-    const errorList: string[] = [];
+const Navigation = () => {
+  const location = useLocation();
+  
+  return (
+    <Drawer
+      variant="permanent"
+      sx={{
+        width: drawerWidth,
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
+          width: drawerWidth,
+          boxSizing: 'border-box',
+        },
+      }}
+    >
+      <Toolbar />
+      <List>
+        <ListItem button component={Link} to="/" selected={location.pathname === '/'}>
+          <ListItemIcon><HomeIcon /></ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItem>
+        {tools.map((tool) => (
+          <ListItem 
+            button 
+            component={Link} 
+            to={tool.path} 
+            key={tool.path}
+            selected={location.pathname === tool.path}
+          >
+            <ListItemIcon>{tool.icon}</ListItemIcon>
+            <ListItemText primary={tool.title} />
+          </ListItem>
+        ))}
+      </List>
+    </Drawer>
+  );
+};
 
-    // Track file drop event
-    if (window.gtag) {
-      window.gtag('event', 'files_dropped', {
-        'event_category': 'Conversion',
-        'event_label': 'Files Dropped',
-        'value': acceptedFiles.length
-      });
+const App: React.FC = () => {
+  useEffect(() => {
+    // Initialize AdSense ads
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (err) {
+      console.error('AdSense error:', err);
     }
-
-    for (let i = 0; i < acceptedFiles.length; i++) {
-      if (errorList.length >= MAX_ERRORS) {
-        setAbortWarning(true);
-        break;
-      }
-      const file = acceptedFiles[i];
-      try {
-        if (file.size > MAX_FILE_SIZE) {
-          throw new Error(`File ${file.name} is too large. Maximum size is 10MB.`);
-        }
-        const convertedBlob = await heic2any({
-          blob: file,
-          toType: 'image/jpeg',
-          quality: 0.8,
-        }) as Blob;
-        const url = URL.createObjectURL(convertedBlob);
-        convertedFiles.push({
-          name: file.name.replace(/\.heic$/i, '.jpg'),
-          url,
-          blob: convertedBlob,
-        });
-      } catch (error) {
-        const msg = error instanceof Error ? error.message : 'Error converting file';
-        errorList.push(`${file.name}: ${msg}`);
-      }
-      setProgress(Math.round(((i + 1) / acceptedFiles.length) * 100));
-    }
-    setFiles(prevFiles => [...prevFiles, ...convertedFiles]);
-    setErrors(errorList);
-    setIsConverting(false);
-    setProgress(0);
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: {
-      'image/heic': ['.heic', '.HEIC'],
-    },
-    maxSize: MAX_FILE_SIZE,
-    multiple: true,
-  });
-
-  const handleDownloadZip = async () => {
-    const zip = new JSZip();
-    files.forEach(file => {
-      zip.file(file.name, file.blob);
-    });
-    const content = await zip.generateAsync({ type: 'blob' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(content);
-    link.download = 'converted-jpegs.zip';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    // Track ZIP download event
-    if (window.gtag) {
-      window.gtag('event', 'zip_download', {
-        'event_category': 'Download',
-        'event_label': 'Download All',
-        'value': files.length
-      });
-    }
-  };
-
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Box sx={{
-        minHeight: '100vh',
-        background: 'linear-gradient(180deg, #f9f9f9 0%, #e3eafc 100%)',
-      }}>
-        <Container maxWidth="md">
-          <Box sx={{ my: 4 }}>
-            <Typography variant="h4" component="h1" gutterBottom align="center">
-              Convert Your iPhone Photos to JPEG - Simple & Free!
-            </Typography>
-            <Typography variant="subtitle1" align="center" color="text.secondary" paragraph>
-              Effortlessly convert your iPhone HEIC photos to universally compatible JPEG format. Our professional-grade tool processes all images <b>entirely within your browser</b>—<b>no uploads, no server storage, and no compromise to your privacy</b>. Simply drag and drop your HEIC images and download high-quality JPEGs instantly.
-            </Typography>
-
-            <Paper
-              {...getRootProps()}
-              sx={{
-                p: 3,
-                mt: 4,
-                textAlign: 'center',
-                cursor: 'pointer',
-                backgroundColor: isDragActive ? 'action.hover' : 'background.paper',
-                border: '2px dashed',
-                borderColor: isDragActive ? 'primary.main' : 'divider',
-                minHeight: 180,
-                height: { xs: 180, sm: 220, md: 260 },
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-              }}
-            >
-              <input {...getInputProps()} />
-              <Typography variant="h6" gutterBottom>
-                {isDragActive
-                  ? 'Drop the files here...'
-                  : 'Drag & drop HEIC files here, or click to select files'}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                No file number limit, up to 10MB each
-              </Typography>
-            </Paper>
-
-            {isConverting && (
-              <Box sx={{ mt: 4 }}>
-                <LinearProgress variant="determinate" value={progress} />
-                <Typography variant="body2" align="center" sx={{ mt: 1 }}>{progress}%</Typography>
-              </Box>
-            )}
-
-            {(errors.length > 0 || abortWarning) && (
-              <Box sx={{ mt: 4 }}>
-                {errors.map((err, idx) => (
-                  <Alert severity="error" sx={{ mb: 1 }} key={idx}>{err}</Alert>
-                ))}
-                {abortWarning && (
-                  <Alert severity="warning">Too many errors. Aborted remaining files.</Alert>
-                )}
-              </Box>
-            )}
-
-            {files.length > 0 && (
-              <Box sx={{ mt: 4 }}>
-                <Stack direction="row" spacing={2} sx={{ mb: 2, justifyContent: 'flex-end' }}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleDownloadZip}
-                    disabled={isConverting}
-                  >
-                    Download All
-                  </Button>
-                </Stack>
-                <FileList
-                  files={files}
-                  isConverting={isConverting}
-                  grid
-                />
-              </Box>
-            )}
-
-            <FAQ />
+    <Router>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Box sx={{ 
+          background: 'linear-gradient(180deg, #f9f9f9 0%, #e3eafc 100%)', 
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'row',
+          fontFamily: `-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`
+        }}>
+          <Navigation />
+          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <Toolbar />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              {tools.map((tool) => (
+                <Route key={tool.path} path={tool.path} element={<tool.component />} />
+              ))}
+            </Routes>
           </Box>
-        </Container>
-        <Footer />
-      </Box>
-    </ThemeProvider>
+        </Box>
+      </ThemeProvider>
+    </Router>
   );
-}
+};
 
 export default App; 
