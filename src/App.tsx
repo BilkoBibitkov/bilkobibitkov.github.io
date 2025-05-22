@@ -121,58 +121,118 @@ const Sidebar = () => (
   <nav style={{
     width: '220px',
     background: '#ffffff',
-    padding: '30px 20px',
-    borderRight: '1px solid #eee',
+    padding: '0',
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
     fontFamily: 'inherit',
     fontSize: '1.1em',
     boxShadow: '2px 0 4px rgba(0,0,0,0.05)'
   }}>
-    <div style={{ 
-      fontWeight: 'bold', 
-      fontSize: '1.3em', 
-      marginBottom: '30px', 
-      color: '#3498db',
-      padding: '10px',
-      borderRadius: '8px',
-      background: '#f8f9fa'
+    {/* Home Section */}
+    <div style={{
+      padding: '20px',
+      background: '#3498db',
+      color: '#ffffff',
+      textAlign: 'center',
+      fontSize: '1.2em',
+      fontWeight: 'bold'
     }}>
-      <span role="img" aria-label="home">🏠</span> Home
-    </div>
-    {[
-      { to: '/', text: 'Home' },
-      { to: '/heic-to-jpeg', text: 'Project 1: HEIC to JPEG' },
-      { to: '/temperature-converter', text: 'Project 2: Temperature Converter' },
-      { to: '/distance-converter', text: 'Project 3: Distance Converter' }
-    ].map((link, index) => (
-      <Link 
-        key={index}
-        to={link.to} 
-        style={{ 
-          color: '#34495e', 
-          textDecoration: 'none', 
-          marginBottom: '10px',
-          padding: '10px',
-          borderRadius: '8px',
-          transition: 'all 0.3s ease'
-        }}
-        className="nav-link"
-      >
-        {link.text}
+      <Link to="/" style={{ 
+        color: '#ffffff', 
+        textDecoration: 'none',
+        display: 'block',
+        width: '100%'
+      }}>
+        <span role="img" aria-label="home">🏠</span> Home
       </Link>
-    ))}
-    <div style={{ 
-      marginTop: 'auto', 
-      fontSize: '0.9em', 
-      color: '#7f8c8d',
-      padding: '15px',
-      background: '#f8f9fa',
-      borderRadius: '8px'
+    </div>
+
+    {/* Projects Section */}
+    <div style={{
+      padding: '20px',
+      borderBottom: '1px solid #eee'
     }}>
-      <span role="img" aria-label="joke">😄</span> Metric system fans welcome! Imperial users tolerated.
+      <div style={{
+        color: '#7f8c8d',
+        fontSize: '0.9em',
+        marginBottom: '15px',
+        textTransform: 'uppercase',
+        letterSpacing: '1px'
+      }}>
+        Projects
+      </div>
+      {[
+        { to: '/heic-to-jpeg', text: 'HEIC to JPEG' },
+        { to: '/temperature-converter', text: 'Temperature Converter' },
+        { to: '/distance-converter', text: 'Distance Converter' }
+      ].map((link, index) => (
+        <Link 
+          key={index}
+          to={link.to} 
+          style={{ 
+            color: '#34495e', 
+            textDecoration: 'none', 
+            marginBottom: '10px',
+            padding: '10px',
+            borderRadius: '8px',
+            transition: 'all 0.3s ease',
+            display: 'block'
+          }}
+          className="nav-link"
+        >
+          {link.text}
+        </Link>
+      ))}
+    </div>
+
+    {/* System Links Section */}
+    <div style={{
+      padding: '20px',
+      marginTop: 'auto'
+    }}>
+      <div style={{
+        color: '#7f8c8d',
+        fontSize: '0.9em',
+        marginBottom: '15px',
+        textTransform: 'uppercase',
+        letterSpacing: '1px'
+      }}>
+        System
+      </div>
+      {[
+        { to: '/privacy', text: 'Privacy Policy' },
+        { to: '/terms', text: 'Terms of Service' },
+        { to: '/about', text: 'About' }
+      ].map((link, index) => (
+        <Link 
+          key={index}
+          to={link.to} 
+          style={{ 
+            color: '#34495e', 
+            textDecoration: 'none', 
+            marginBottom: '10px',
+            padding: '10px',
+            borderRadius: '8px',
+            transition: 'all 0.3s ease',
+            display: 'block',
+            fontSize: '0.9em'
+          }}
+          className="nav-link"
+        >
+          {link.text}
+        </Link>
+      ))}
+      <div style={{ 
+        marginTop: '20px',
+        fontSize: '0.9em', 
+        color: '#7f8c8d',
+        padding: '15px',
+        background: '#f8f9fa',
+        borderRadius: '8px'
+      }}>
+        <span role="img" aria-label="joke">😄</span> Metric system fans welcome! Imperial users tolerated.
+      </div>
     </div>
   </nav>
 );
@@ -186,7 +246,6 @@ function App() {
         background: '#ffffff',
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
       }}>
-        <AdBanner id="5573198755" />
         <Sidebar />
         <div style={{ 
           flex: 1, 
@@ -194,19 +253,26 @@ function App() {
           display: 'flex', 
           flexDirection: 'column', 
           minHeight: '100vh',
-          background: '#ffffff'
+          background: '#ffffff',
+          position: 'relative'
         }}>
-          <div style={{ flex: 1 }}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/heic-to-jpeg" element={<HeicConverter />} />
-              <Route path="/temperature-converter" element={<TemperatureConverter />} />
-              <Route path="/distance-converter" element={<DistanceConverter />} />
-            </Routes>
+          <div style={{ 
+            flex: 1,
+            display: 'flex',
+            gap: '20px'
+          }}>
+            <div style={{ flex: 1 }}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/heic-to-jpeg" element={<HeicConverter />} />
+                <Route path="/temperature-converter" element={<TemperatureConverter />} />
+                <Route path="/distance-converter" element={<DistanceConverter />} />
+              </Routes>
+            </div>
+            <AdBanner id="1123334776" />
           </div>
           <Footer />
         </div>
-        <AdBanner id="1123334776" />
       </div>
     </Router>
   );
