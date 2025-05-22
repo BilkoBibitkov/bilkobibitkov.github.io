@@ -49,6 +49,8 @@ function Home() {
         title="Home"
         description="Free, browser-based tools for everyday conversions. Convert HEIC to JPEG, temperatures, and distances with ease. No signup required, instant results."
         keywords="web tools, converter, HEIC to JPEG, temperature converter, distance converter, metric system, imperial units"
+        path="/"
+        type="WebSite"
       />
       <h1 style={{
         fontSize: '2.5em',

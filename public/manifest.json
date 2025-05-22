@@ -1,15 +1,50 @@
 {
-  "short_name": "HEIC Converter",
-  "name": "HEIC to JPEG Converter",
+  "name": "Simple Web Tools",
+  "short_name": "WebTools",
+  "description": "Free, browser-based tools for everyday conversions. Convert HEIC to JPEG, temperatures, and distances with ease.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d1d1f",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#2196f3",
-  "background_color": "#ffffff"
+  "categories": ["utilities", "productivity"],
+  "screenshots": [
+    {
+      "src": "/screenshot-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Home page of Simple Web Tools"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "HEIC to JPEG",
+      "url": "/heic-to-jpeg",
+      "description": "Convert HEIC images to JPEG format"
+    },
+    {
+      "name": "Temperature Converter",
+      "url": "/temperature-converter",
+      "description": "Convert between Celsius, Fahrenheit, and Kelvin"
+    },
+    {
+      "name": "Distance Converter",
+      "url": "/distance-converter",
+      "description": "Convert between metric and imperial units"
+    }
+  ]
 } 
