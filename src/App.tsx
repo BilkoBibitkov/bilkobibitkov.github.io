@@ -42,29 +42,29 @@ function Home() {
     }}>
       <h1 style={{
         fontSize: '2.5em',
-        color: '#2c3e50',
+        color: '#1d1d1f',
         marginBottom: '20px',
         fontWeight: '600'
       }}>Simple Web Tools</h1>
       <p style={{
         fontSize: '1.1em',
         lineHeight: '1.6',
-        color: '#34495e',
+        color: '#1d1d1f',
         marginBottom: '30px'
       }}>
         Welcome to my collection of browser-based tools! As someone who loves the metric system and has a healthy skepticism for obscure formats like HEIC, I built these utilities to make life easier (and a bit funnier). No logins, no data collection, just pure, free, metric-loving utility. Enjoy!
       </p>
       <section style={{ 
         marginTop: '40px',
-        background: '#f8f9fa',
+        background: '#f5f5f7',
         padding: '30px',
-        borderRadius: '12px',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+        borderRadius: '12px'
       }}>
         <h2 style={{
-          color: '#2c3e50',
+          color: '#1d1d1f',
           marginBottom: '20px',
-          fontSize: '1.8em'
+          fontSize: '1.8em',
+          fontWeight: '500'
         }}>AdSense Policy Sections</h2>
         <ul style={{
           listStyle: 'none',
@@ -74,19 +74,19 @@ function Home() {
             'No user data is stored or tracked. Ever.',
             'All tools are free and browser-based. No hidden fees, no catch.',
             'Each project is independently indexable for SEO.',
-            'AdSense banners are present on every page (see those lovely sidebars?).',
+            'AdSense banners are present on every page.',
             'We follow all AdSense content policies.'
           ].map((item, index) => (
             <li key={index} style={{
               marginBottom: '15px',
-              paddingLeft: '25px',
+              paddingLeft: '20px',
               position: 'relative',
-              color: '#34495e'
+              color: '#1d1d1f'
             }}>
               <span style={{
                 position: 'absolute',
                 left: 0,
-                color: '#3498db'
+                color: '#86868b'
               }}>•</span>
               {item}
             </li>
@@ -95,20 +95,20 @@ function Home() {
       </section>
       <section style={{ 
         marginTop: '40px',
-        background: '#f8f9fa',
+        background: '#f5f5f7',
         padding: '30px',
-        borderRadius: '12px',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+        borderRadius: '12px'
       }}>
         <h2 style={{
-          color: '#2c3e50',
+          color: '#1d1d1f',
           marginBottom: '20px',
-          fontSize: '1.8em'
+          fontSize: '1.8em',
+          fontWeight: '500'
         }}>Why these tools?</h2>
         <p style={{
           fontSize: '1.1em',
           lineHeight: '1.6',
-          color: '#34495e'
+          color: '#1d1d1f'
         }}>
           Because sometimes you just want to convert a temperature, a distance, or a HEIC file without feeling like you need a PhD in computer science or a subscription to a cloud service. Also, I love to code and make people smile.
         </p>
@@ -125,40 +125,40 @@ const Sidebar = () => (
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
-    fontFamily: 'inherit',
-    fontSize: '1.1em',
-    boxShadow: '2px 0 4px rgba(0,0,0,0.05)'
+    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif',
+    fontSize: '0.9em',
+    boxShadow: '0 0 0 1px rgba(0,0,0,0.05)'
   }}>
     {/* Home Section */}
     <div style={{
-      padding: '20px',
-      background: '#3498db',
-      color: '#ffffff',
-      textAlign: 'center',
-      fontSize: '1.2em',
-      fontWeight: 'bold'
+      padding: '24px 20px',
+      background: '#ffffff',
+      borderBottom: '1px solid rgba(0,0,0,0.05)'
     }}>
       <Link to="/" style={{ 
-        color: '#ffffff', 
+        color: '#1d1d1f', 
         textDecoration: 'none',
         display: 'block',
-        width: '100%'
+        width: '100%',
+        fontSize: '1.1em',
+        fontWeight: '500'
       }}>
-        <span role="img" aria-label="home">🏠</span> Home
+        Home
       </Link>
     </div>
 
     {/* Projects Section */}
     <div style={{
       padding: '20px',
-      borderBottom: '1px solid #eee'
+      borderBottom: '1px solid rgba(0,0,0,0.05)'
     }}>
       <div style={{
-        color: '#7f8c8d',
-        fontSize: '0.9em',
+        color: '#86868b',
+        fontSize: '0.8em',
         marginBottom: '15px',
         textTransform: 'uppercase',
-        letterSpacing: '1px'
+        letterSpacing: '0.5px',
+        fontWeight: '500'
       }}>
         Projects
       </div>
@@ -171,13 +171,13 @@ const Sidebar = () => (
           key={index}
           to={link.to} 
           style={{ 
-            color: '#34495e', 
+            color: '#1d1d1f', 
             textDecoration: 'none', 
-            marginBottom: '10px',
-            padding: '10px',
-            borderRadius: '8px',
-            transition: 'all 0.3s ease',
-            display: 'block'
+            marginBottom: '12px',
+            padding: '8px 0',
+            transition: 'all 0.2s ease',
+            display: 'block',
+            fontSize: '0.95em'
           }}
           className="nav-link"
         >
@@ -192,11 +192,12 @@ const Sidebar = () => (
       marginTop: 'auto'
     }}>
       <div style={{
-        color: '#7f8c8d',
-        fontSize: '0.9em',
+        color: '#86868b',
+        fontSize: '0.8em',
         marginBottom: '15px',
         textTransform: 'uppercase',
-        letterSpacing: '1px'
+        letterSpacing: '0.5px',
+        fontWeight: '500'
       }}>
         System
       </div>
@@ -209,12 +210,11 @@ const Sidebar = () => (
           key={index}
           to={link.to} 
           style={{ 
-            color: '#34495e', 
+            color: '#1d1d1f', 
             textDecoration: 'none', 
-            marginBottom: '10px',
-            padding: '10px',
-            borderRadius: '8px',
-            transition: 'all 0.3s ease',
+            marginBottom: '12px',
+            padding: '8px 0',
+            transition: 'all 0.2s ease',
             display: 'block',
             fontSize: '0.9em'
           }}
@@ -225,13 +225,12 @@ const Sidebar = () => (
       ))}
       <div style={{ 
         marginTop: '20px',
-        fontSize: '0.9em', 
-        color: '#7f8c8d',
-        padding: '15px',
-        background: '#f8f9fa',
-        borderRadius: '8px'
+        fontSize: '0.85em', 
+        color: '#86868b',
+        padding: '15px 0',
+        borderTop: '1px solid rgba(0,0,0,0.05)'
       }}>
-        <span role="img" aria-label="joke">😄</span> Metric system fans welcome! Imperial users tolerated.
+        Metric system fans welcome. Imperial users tolerated.
       </div>
     </div>
   </nav>
@@ -244,7 +243,7 @@ function App() {
         display: 'flex', 
         minHeight: '100vh',
         background: '#ffffff',
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
       }}>
         <Sidebar />
         <div style={{ 
