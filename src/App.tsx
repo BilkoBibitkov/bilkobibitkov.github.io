@@ -153,7 +153,7 @@ const Sidebar = () => (
     {/* System Links Section */}
     <div style={{
       padding: '20px',
-      marginTop: 'auto'
+      borderBottom: '1px solid rgba(0,0,0,0.05)'
     }}>
       <div style={{
         color: '#86868b',
@@ -166,9 +166,9 @@ const Sidebar = () => (
         System
       </div>
       {[
+        { to: '/about', text: 'About' },
         { to: '/privacy', text: 'Privacy Policy' },
-        { to: '/terms', text: 'Terms of Service' },
-        { to: '/about', text: 'About' }
+        { to: '/terms', text: 'Terms of Service' }
       ].map((link, index) => (
         <Link 
           key={index}
@@ -180,22 +180,23 @@ const Sidebar = () => (
             padding: '8px 0',
             transition: 'all 0.2s ease',
             display: 'block',
-            fontSize: '0.9em'
+            fontSize: '0.95em'
           }}
           className="nav-link"
         >
           {link.text}
         </Link>
       ))}
-      <div style={{ 
-        marginTop: '20px',
-        fontSize: '0.85em', 
-        color: '#86868b',
-        padding: '15px 0',
-        borderTop: '1px solid rgba(0,0,0,0.05)'
-      }}>
-        Metric system fans welcome. Imperial users tolerated.
-      </div>
+    </div>
+
+    <div style={{ 
+      marginTop: 'auto',
+      padding: '20px',
+      fontSize: '0.85em', 
+      color: '#86868b',
+      borderTop: '1px solid rgba(0,0,0,0.05)'
+    }}>
+      Metric system fans welcome. Imperial users tolerated.
     </div>
   </nav>
 );
