@@ -7,6 +7,8 @@ import About from './components/About';
 import Privacy from './components/Privacy';
 import Terms from './components/Terms';
 import Footer from './components/Footer';
+import CookieConsent from './components/CookieConsent';
+import SEO from './components/SEO';
 
 // AdSense banner component
 const AdBanner = ({ id }: { id: string }) => {
@@ -43,6 +45,11 @@ function Home() {
       maxWidth: '800px',
       margin: '0 auto'
     }}>
+      <SEO 
+        title="Home"
+        description="Free, browser-based tools for everyday conversions. Convert HEIC to JPEG, temperatures, and distances with ease. No signup required, instant results."
+        keywords="web tools, converter, HEIC to JPEG, temperature converter, distance converter, metric system, imperial units"
+      />
       <h1 style={{
         fontSize: '2.5em',
         color: '#1d1d1f',
@@ -204,6 +211,7 @@ const Sidebar = () => (
 function App() {
   return (
     <Router>
+      <CookieConsent />
       <div style={{ 
         display: 'flex', 
         minHeight: '100vh',
