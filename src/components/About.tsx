@@ -69,11 +69,38 @@ const About = () => {
         <p style={{
           fontSize: '1.1em',
           lineHeight: '1.6',
-          color: '#1d1d1f'
+          color: '#1d1d1f',
+          marginBottom: '20px'
         }}>
           Feel free to reach out if you have any questions, suggestions, or just want to connect. 
           I'm always open to feedback and collaboration opportunities.
         </p>
+        <a 
+          href="https://github.com/BilkoBibitkov" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-block',
+            background: '#1d1d1f',
+            color: '#ffffff',
+            padding: '12px 24px',
+            borderRadius: '8px',
+            textDecoration: 'none',
+            fontSize: '1.1em',
+            fontWeight: '500',
+            transition: 'all 0.2s ease'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.background = '#2c2c2e';
+            e.currentTarget.style.transform = 'translateY(-1px)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.background = '#1d1d1f';
+            e.currentTarget.style.transform = 'translateY(0)';
+          }}
+        >
+          Find me on GitHub
+        </a>
       </section>
     </PageLayout>
   );
