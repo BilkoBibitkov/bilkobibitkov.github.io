@@ -3,6 +3,8 @@ import { HashRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import TemperatureConverter from './components/TemperatureConverter';
 import DistanceConverter from './components/DistanceConverter';
 import HeicConverter from './components/HeicConverter';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 // AdSense banner component
 const AdBanner = ({ id }: { id: string }) => {
@@ -40,17 +42,21 @@ function Home() {
 function App() {
   return (
     <Router>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <AdBanner id="left-banner" />
-        <div style={{ flex: 1, padding: '20px' }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/heic-to-jpeg" element={<HeicConverter />} />
-            <Route path="/temperature-converter" element={<TemperatureConverter />} />
-            <Route path="/distance-converter" element={<DistanceConverter />} />
-          </Routes>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <Header />
+        <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+          <AdBanner id="left-banner" />
+          <div style={{ flex: 1, padding: '20px' }}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/heic-to-jpeg" element={<HeicConverter />} />
+              <Route path="/temperature-converter" element={<TemperatureConverter />} />
+              <Route path="/distance-converter" element={<DistanceConverter />} />
+            </Routes>
+          </div>
+          <AdBanner id="right-banner" />
         </div>
-        <AdBanner id="right-banner" />
+        <Footer />
       </div>
     </Router>
   );
