@@ -1,31 +1,16 @@
 {
-  "name": "heic-to-jpeg-converter",
+  "name": "simple-web-tools",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://bilkobibitkov.github.io/heic-to-jpeg/",
+  "homepage": "https://bilkobibitkov.github.io",
   "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.10",
-    "@mui/material": "^5.15.10",
-    "heic2any": "^0.0.4",
-    "jszip": "^3.10.1",
     "react": "^18.2.0",
-    "react-dnd": "^16.0.1",
-    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
-    "react-dropzone": "^14.3.8",
     "react-router-dom": "^7.6.0",
     "react-scripts": "5.0.1",
-    "recharts": "^2.15.3",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "typescript": "^4.9.5"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@types/jest": "^29.5.14",
-    "@types/node": "^16.18.82",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19"
   },
@@ -37,8 +22,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
