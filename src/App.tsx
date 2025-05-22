@@ -68,45 +68,6 @@ function Home() {
           marginBottom: '20px',
           fontSize: '1.8em',
           fontWeight: '500'
-        }}>AdSense Policy Sections</h2>
-        <ul style={{
-          listStyle: 'none',
-          padding: 0
-        }}>
-          {[
-            'No user data is stored or tracked. Ever.',
-            'All tools are free and browser-based. No hidden fees, no catch.',
-            'Each project is independently indexable for SEO.',
-            'AdSense banners are present on every page.',
-            'We follow all AdSense content policies.'
-          ].map((item, index) => (
-            <li key={index} style={{
-              marginBottom: '15px',
-              paddingLeft: '20px',
-              position: 'relative',
-              color: '#1d1d1f'
-            }}>
-              <span style={{
-                position: 'absolute',
-                left: 0,
-                color: '#86868b'
-              }}>•</span>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </section>
-      <section style={{ 
-        marginTop: '40px',
-        background: '#f5f5f7',
-        padding: '30px',
-        borderRadius: '12px'
-      }}>
-        <h2 style={{
-          color: '#1d1d1f',
-          marginBottom: '20px',
-          fontSize: '1.8em',
-          fontWeight: '500'
         }}>Why these tools?</h2>
         <p style={{
           fontSize: '1.1em',
