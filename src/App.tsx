@@ -3,6 +3,9 @@ import { HashRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import TemperatureConverter from './components/TemperatureConverter';
 import DistanceConverter from './components/DistanceConverter';
 import HeicConverter from './components/HeicConverter';
+import About from './components/About';
+import Privacy from './components/Privacy';
+import Terms from './components/Terms';
 import Footer from './components/Footer';
 
 // AdSense banner component
@@ -266,6 +269,9 @@ function App() {
                 <Route path="/heic-to-jpeg" element={<HeicConverter />} />
                 <Route path="/temperature-converter" element={<TemperatureConverter />} />
                 <Route path="/distance-converter" element={<DistanceConverter />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
               </Routes>
             </div>
             <AdBanner id="1123334776" />
