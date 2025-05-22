@@ -1,34 +1,44 @@
 import React from 'react';
 
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
 interface FAQProps {
-  items: FAQItem[];
-  title?: string;
+  title: string;
+  questions: {
+    question: string;
+    answer: string;
+  }[];
 }
 
-function FAQ({ items, title = 'Frequently Asked Questions' }: FAQProps) {
+const FAQ: React.FC<FAQProps> = ({ title, questions }) => {
   return (
-    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px' }}>
-      <h2 style={{ marginBottom: '20px' }}>{title}</h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        {items.map((item, index) => (
-          <div key={index} style={{
-            border: '1px solid #dee2e6',
-            borderRadius: '8px',
-            padding: '20px',
-            backgroundColor: '#fff'
-          }}>
-            <h3 style={{ margin: '0 0 10px 0', color: '#333' }}>{item.question}</h3>
-            <p style={{ margin: 0, color: '#666' }}>{item.answer}</p>
-          </div>
-        ))}
-      </div>
+    <div style={{ 
+      marginTop: '40px',
+      background: '#f5f5f7',
+      padding: '30px',
+      borderRadius: '12px'
+    }}>
+      <h2 style={{
+        color: '#1d1d1f',
+        marginBottom: '20px',
+        fontSize: '1.8em',
+        fontWeight: '500'
+      }}>{title}</h2>
+      {questions.map((item, index) => (
+        <div key={index} style={{ marginBottom: '20px' }}>
+          <h3 style={{
+            color: '#1d1d1f',
+            marginBottom: '10px',
+            fontSize: '1.2em',
+            fontWeight: '500'
+          }}>{item.question}</h3>
+          <p style={{
+            color: '#1d1d1f',
+            fontSize: '1.1em',
+            lineHeight: '1.6'
+          }}>{item.answer}</p>
+        </div>
+      ))}
     </div>
   );
-}
+};
 
 export default FAQ; 

@@ -1,23 +1,23 @@
 import React from 'react';
 import FAQ from './FAQ';
 
-const temperatureFaqItems = [
-  {
-    question: 'What temperature scales are supported?',
-    answer: 'The converter supports Celsius (°C), Fahrenheit (°F), and Kelvin (K) temperature scales.'
-  },
-  {
-    question: 'How accurate are the conversions?',
-    answer: 'The conversions are mathematically precise, using standard conversion formulas between the different temperature scales.'
-  },
-  {
-    question: 'Why do we need different temperature scales?',
-    answer: 'Different temperature scales are used in different parts of the world and for different scientific purposes. Celsius is used in most countries, Fahrenheit is primarily used in the United States, and Kelvin is used in scientific applications.'
-  }
-];
+const TemperatureFaq: React.FC = () => {
+  const questions = [
+    {
+      question: "Why use this temperature converter?",
+      answer: "Our converter provides instant, accurate conversions between Celsius, Fahrenheit, and Kelvin. It's perfect for cooking, weather, or scientific calculations."
+    },
+    {
+      question: "How accurate are the conversions?",
+      answer: "Our converter uses precise mathematical formulas to ensure accurate conversions. The results are rounded to two decimal places for readability."
+    },
+    {
+      question: "Can I convert multiple temperatures at once?",
+      answer: "Yes! The converter updates in real-time as you type, showing all three temperature scales simultaneously."
+    }
+  ];
 
-function TemperatureFaq() {
-  return <FAQ items={temperatureFaqItems} title="Temperature Conversion FAQ" />;
-}
+  return <FAQ title="Temperature Converter FAQ" questions={questions} />;
+};
 
 export default TemperatureFaq; 

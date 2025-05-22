@@ -1,23 +1,23 @@
 import React from 'react';
 import FAQ from './FAQ';
 
-const heicFaqItems = [
-  {
-    question: 'What is HEIC format?',
-    answer: 'HEIC (High Efficiency Image Container) is an image format developed by Apple that provides better compression while maintaining high quality. It\'s commonly used in iOS devices.'
-  },
-  {
-    question: 'Why convert HEIC to JPG?',
-    answer: 'JPG is a more widely supported format that can be opened on any device or platform. Converting HEIC to JPG ensures better compatibility with various applications and devices.'
-  },
-  {
-    question: 'Will the conversion affect image quality?',
-    answer: 'The conversion process maintains high image quality while ensuring compatibility. However, since JPG is a lossy format, there might be a slight reduction in quality, but it\'s usually not noticeable.'
-  }
-];
+const HeicFaq: React.FC = () => {
+  const questions = [
+    {
+      question: "What is HEIC?",
+      answer: "HEIC (High Efficiency Image Container) is Apple's image format that provides better compression while maintaining image quality. It's the default format for photos taken on iPhones and iPads."
+    },
+    {
+      question: "Why convert HEIC to JPEG?",
+      answer: "JPEG is a more widely supported format. Converting HEIC to JPEG ensures your images can be viewed on any device or platform, not just Apple devices."
+    },
+    {
+      question: "Is my data safe?",
+      answer: "Yes! All conversions happen in your browser. Your images are never uploaded to any server, ensuring complete privacy and security."
+    }
+  ];
 
-function HeicFaq() {
-  return <FAQ items={heicFaqItems} title="HEIC to JPG FAQ" />;
-}
+  return <FAQ title="HEIC Converter FAQ" questions={questions} />;
+};
 
 export default HeicFaq; 
